@@ -9,8 +9,9 @@ export const fetchCollection = () => {
         firstname: 'Karim',
         lastname: 'Benzema',
         birthday: '1987-12-19T08:38:50.090Z',
-        image: 'https://images.fotmob.com/image_resources/playerimages/26166.png'
-      }
-    }
+        image:
+          'https://images.fotmob.com/image_resources/playerimages/26166.png',
+      },
+    },
   ];
 };
