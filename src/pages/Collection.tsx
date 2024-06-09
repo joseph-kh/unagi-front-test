@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { fetchCollection } from '../lib/collection';
 
 import './Collection.css';
@@ -11,5 +9,5 @@ export const Collection = () => {
   /**
    * Step 1: Render the card
    */
-  return <div />;
+  return <div>{JSON.stringify(card)}</div>;
 };
