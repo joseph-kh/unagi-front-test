@@ -1,22 +1,38 @@
-// import { fetchCollection } from '../lib/collection';
 import { PlayerCardsContainer } from '../components/player/PlayerCard.elements';
-
 import PlayerCard from '../components/player/PlayerCard';
-import { SectionContainer } from '../components/ui';
+import { ErrorMessage, SectionContainer } from '../components/ui';
+import { useCards } from '../hooks/useApi';
+import { Spinner } from '../components/ui';
+import { apiErrorHandler } from '../utils/helpers';
+import { fullName, generateImageUrl, formattedDate } from '../utils/helpers';
 
 const CollectionPage = () => {
-  // const collection = fetchCollection();
-  // const card = collection[0];
+  const { cards, isCardsError, isCardsLoading } = useCards();
 
-  /**
-   * Step 1: Render the card
-   */
+  // TODO: Add a condition if cards array is empty
+
+  if (isCardsLoading) return <Spinner />;
+
+  if (isCardsError)
+    return (
+      <SectionContainer title="Oops!">
+        <ErrorMessage fontSize={64}>
+          {apiErrorHandler(isCardsError, 'Cards')}
+        </ErrorMessage>
+      </SectionContainer>
+    );
+
   return (
     <SectionContainer title="your favorite athletes' Ultimate Cards">
       <PlayerCardsContainer>
-        <PlayerCard />
-        <PlayerCard />
-        <PlayerCard />
+        {cards?.map(({ id, player: { firstname, lastname, birthday } }) => (
+          <PlayerCard
+            key={id}
+            name={fullName(firstname, lastname)}
+            dob={formattedDate(birthday)}
+            image={generateImageUrl(id)}
+          />
+        ))}
       </PlayerCardsContainer>
     </SectionContainer>
   );
