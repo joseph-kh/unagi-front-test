@@ -9,6 +9,7 @@ export const theme: DefaultTheme = {
     btnHoverPrimary: '#E0E0E0',
     btnHoverSecondary: '#303030',
     placeholderText: '#242424',
+    disabled: '#acacac',
     white: '#FFFFFF',
     black: '#000000',
     error: '#bf2c24',
