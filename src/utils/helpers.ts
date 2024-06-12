@@ -1,5 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import { unknownErrorMessage } from './constants';
+import { Card, SortTypes } from '../types';
 
 export const apiErrorHandler = (err: unknown, type: 'Cards') => {
   if (axios.isAxiosError(err)) {
@@ -16,7 +17,7 @@ export const apiErrorHandler = (err: unknown, type: 'Cards') => {
 };
 
 export const fullName = (firstName: string, lastName: string) => {
-  const fullName = firstName && lastName ? `${firstName} ${firstName}` : 'N/A';
+  const fullName = firstName && lastName ? `${firstName} ${lastName}` : 'N/A';
   return fullName;
 };
 
@@ -36,4 +37,51 @@ export const formattedDate = (dob: string) => {
   const formattedDate = `${day}/${month}/${year}`;
 
   return formattedDate;
+};
+
+export const sortedCards = (
+  sortBy: SortTypes,
+  cards?: Card[],
+): Card[] | undefined => {
+  if (cards) {
+    switch (sortBy) {
+      case SortTypes.FIRST_NAME_ASC:
+        return [...cards].sort((a, b) =>
+          a.player.firstname.localeCompare(b.player.firstname),
+        );
+
+      case SortTypes.FIRST_NAME_DESC:
+        return [...cards].sort((a, b) =>
+          b.player.firstname.localeCompare(a.player.firstname),
+        );
+
+      case SortTypes.LAST_NAME_ASC:
+        return [...cards].sort((a, b) =>
+          a.player.lastname.localeCompare(b.player.lastname),
+        );
+
+      case SortTypes.LAST_NAME_DESC:
+        return [...cards].sort((a, b) =>
+          b.player.lastname.localeCompare(a.player.lastname),
+        );
+
+      case SortTypes.BIRTHDAY_ASC:
+        return [...cards].sort(
+          (a, b) =>
+            new Date(a.player.birthday).getTime() -
+            new Date(b.player.birthday).getTime(),
+        );
+
+      case SortTypes.BIRTHDAY_DESC:
+        return [...cards].sort(
+          (a, b) =>
+            new Date(b.player.birthday).getTime() -
+            new Date(a.player.birthday).getTime(),
+        );
+
+      default:
+        return cards;
+    }
+  }
+  return undefined;
 };
