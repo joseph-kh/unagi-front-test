@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react';
 import {
   PlayerCardItem,
   PlayerCardImg,
@@ -6,7 +7,21 @@ import {
   PlayerCardDetails,
 } from './PlayerCard.elements';
 
-const PlayerCard = () => {
+interface Props {
+  name: string;
+  dob: string;
+  image?: string;
+}
+
+const PlayerCard = ({ name, dob, image }: Props) => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isImageExist, setIsImageExist] = useState(true);
+
+  const imgSrc = useMemo(() => {
+    if (isImageExist && isImageLoaded) return image;
+    return require('../../images/avatar-placeholder.png');
+  }, [isImageLoaded, isImageExist]);
+
   return (
     <PlayerCardItem
       perspective={500}
@@ -17,9 +32,14 @@ const PlayerCard = () => {
       scale={1.1}
     >
       <PlayerCardDetailContainer>
-        <PlayerCardImg src="https://images.fotmob.com/image_resources/playerimages/26166.png" />
-        <PlayerCardName>Karim Benzema</PlayerCardName>
-        <PlayerCardDetails>1987-12-19</PlayerCardDetails>
+        <PlayerCardImg
+          src={imgSrc}
+          onLoad={() => setIsImageLoaded(true)}
+          onError={() => setIsImageExist(false)}
+          loading="lazy"
+        />
+        <PlayerCardName>{name}</PlayerCardName>
+        <PlayerCardDetails>{dob}</PlayerCardDetails>
       </PlayerCardDetailContainer>
     </PlayerCardItem>
   );

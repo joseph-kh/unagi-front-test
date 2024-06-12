@@ -1,7 +1,7 @@
 import { homeObjOne, homeObjTwo, homeObjThree } from './Data';
 import InfoSection from '../../components/info-section/InfoSection';
 
-function Home() {
+const Home = () => {
   return (
     <>
       <InfoSection {...homeObjOne} />
@@ -9,6 +9,6 @@ function Home() {
       <InfoSection {...homeObjThree} />
     </>
   );
-}
+};
 
 export default Home;

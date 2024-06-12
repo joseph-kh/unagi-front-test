@@ -26,6 +26,11 @@ const Button = styled.button<Props>`
       primary ? theme.colors.btnHoverPrimary : theme.colors.btnHoverSecondary};
   }
 
+  &:disabled {
+    cursor: not-allowed;
+    background-color: ${({ theme }) => theme.colors.disabled};
+  }
+
   @media screen and (max-width: 960px) {
     width: 100%;
   }

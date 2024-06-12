@@ -17,6 +17,7 @@ export const FormInput = styled.input`
   border: none;
   width: 100%;
   font-size: 16px;
+  margin-bottom: 0.2rem;
   border: 1px solid ${(props) => props.theme.colors.white};
   &::placeholder {
     color: ${(props) => props.theme.colors.placeholderText};

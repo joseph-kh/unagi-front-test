@@ -13,3 +13,14 @@ export interface InfoSection {
   img?: string;
   alt?: string;
 }
+
+export interface Player {
+  firstname: string;
+  lastname: string;
+  birthday: string;
+  image?: string;
+}
+export interface Card {
+  id?: number;
+  player: Player;
+}
