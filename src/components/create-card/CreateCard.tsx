@@ -7,10 +7,12 @@ import { loadingNotify, successNotify, errorNotify } from '../../utils/toast';
 import { loadingMessage, successMessage } from '../../utils/constants';
 import { useLoader } from '../../contexts/LoaderContext';
 import { createCardHandler } from '../../lib/collection';
+import { useSWRConfig } from 'swr';
 
 interface CreateCardFormData extends Player {}
 const CreateCard = () => {
   const router = useHistory();
+  const { mutate } = useSWRConfig();
 
   const {
     control,
@@ -26,6 +28,7 @@ const CreateCard = () => {
     const newCard: Card = { player: playerData };
     try {
       await createCardHandler(newCard);
+      await mutate('cards');
       successNotify(successMessage.create, loading);
       router.push(`/collection`);
     } catch (err) {
