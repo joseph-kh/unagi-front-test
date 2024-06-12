@@ -4,10 +4,10 @@ export const useMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
 
   useLayoutEffect(() => {
-    function checkIfMobile() {
+    const checkIfMobile = () => {
       if (window.innerWidth <= 960) setIsMobile(true);
       else setIsMobile(false);
-    }
+    };
 
     window.addEventListener('resize', checkIfMobile);
     checkIfMobile();
