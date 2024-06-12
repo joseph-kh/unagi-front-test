@@ -1,12 +1,16 @@
-import { homeObjOne, homeObjTwo, homeObjThree } from './Data';
 import InfoSection from '../../components/info-section/InfoSection';
+import {
+  homeSectionOne,
+  homeSectionTree,
+  homeSectionTwo,
+} from '../../utils/data/sections';
 
 const Home = () => {
   return (
     <>
-      <InfoSection {...homeObjOne} />
-      <InfoSection {...homeObjTwo} />
-      <InfoSection {...homeObjThree} />
+      <InfoSection {...homeSectionOne} />
+      <InfoSection {...homeSectionTwo} />
+      <InfoSection {...homeSectionTree} />
     </>
   );
 };

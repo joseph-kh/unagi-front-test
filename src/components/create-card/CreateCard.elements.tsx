@@ -12,6 +12,6 @@ export const CreateCardForm = styled.form`
 
   @media screen and (max-width: 820px) {
     flex-direction: column;
-    width: 80%;
+    min-width: 80%;
   }
 `;

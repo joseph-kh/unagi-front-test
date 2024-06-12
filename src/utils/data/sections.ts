@@ -1,6 +1,6 @@
 import { InfoSection } from '../../types';
 
-export const homeObjOne: InfoSection = {
+export const homeSectionOne: InfoSection = {
   lightBg: false,
   lightText: true,
   lightTopLine: true,
@@ -17,7 +17,7 @@ export const homeObjOne: InfoSection = {
   start: false,
 };
 
-export const homeObjTwo: InfoSection = {
+export const homeSectionTwo: InfoSection = {
   lightBg: true,
   lightText: false,
   lightTopLine: true,
@@ -34,7 +34,7 @@ export const homeObjTwo: InfoSection = {
   start: false,
 };
 
-export const homeObjThree: InfoSection = {
+export const homeSectionTree: InfoSection = {
   lightBg: false,
   lightText: true,
   lightTopLine: true,
