@@ -22,8 +22,6 @@ const PlayerCard = ({ name, dob, image }: Props) => {
     return require('../../images/avatar-placeholder.png');
   }, [isImageLoaded, isImageExist]);
 
-  console.log(imgSrc);
-
   return (
     <PlayerCardItem
       perspective={500}
