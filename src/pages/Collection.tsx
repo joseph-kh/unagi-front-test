@@ -15,7 +15,6 @@ const CollectionPage = () => {
 
   const onSortSelect = (value: SortTypes) => setSortBy(value);
 
-  // TODO: Add a condition if cards array is empty
   if (isCardsLoading) return <Spinner />;
 
   if (isCardsError)
